@@ -1,0 +1,44 @@
+/* Create a Java class called Student with the following details as variables within it. 
+(i) USN 
+(ii) Name 
+(iii)Branch 
+(iv)Phone
+Write a Java program to create n Student objects and print the USN, Name, Branch, and 
+Phone of these objects with suitable headings.*/
+import java.util.*;
+import java.io.*;
+public class Student
+{
+public static void main(String s[])
+{ 
+ int num; 
+ System.out.println("Enter the number of students");
+ Scanner in = new Scanner(System.in);
+ num = in.nextInt();
+ Studentv stu[] =new Studentv[num]; 
+for(int i=0;i<num;i++)
+ { 
+stu[i] = new Studentv();
+ System.out.println("Enter the usn:" + i);
+ stu[i].usn = in.nextInt();
+ System.out.println("Enter the name:");
+ stu[i].name = in.next(); 
+ System.out.println("Enter the Phone number:");
+ stu[i].phno = in.nextInt();
+ System.out.println("Enter the Branch:");
+ stu[i].branch = in.next();
+ }
+System.out.println(num+" Students informations are read for here goes the display of the students :");
+System.out.println("USN-NAME-BRANCH-PHONE NUMBER"); 
+for(int i = 0; i < stu.length; i++)
+ { 
+System.out.println( stu[i].usn +"-"+ stu[i].name +"-"+ stu[i].branch + 
+"-"+stu[i].phno ); 
+} 
+ }
+}
+class Studentv
+{ 
+int usn,phno; 
+String name,branch; 
+}
