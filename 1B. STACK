@@ -1,0 +1,68 @@
+/*Write a Java program to implement the Stack using arrays. Write Push(), Pop(), and 
+Display() methods to demonstrate its working.*/
+import java.util.Scanner;
+public class Stacks 
+{
+private static final int capacity = 3;
+int arr[] = new int[capacity];
+int top = -1;
+public void push(int ele)
+{
+if (top < capacity - 1) 
+{
+top++;
+arr[top] = ele;
+System.out.println("Element " + ele + " is pushed to Stack !");
+printElements();
+} 
+else 
+{
+System.out.println("Stack Overflow !");
+}
+}
+public void pop()
+{
+if (top >= 0) 
+{
+top--;
+ System.out.println("Pop operation done !");
+ }
+else
+{
+ System.out.println("Stack Underflow !");
+ }
+}
+public void printElements()
+{
+ if (top >= 0)
+{
+ System.out.println("Elements in stack :");
+ for (int i = 0; i <= top; i++) 
+{
+System.out.println(arr[i]);
+}
+ }
+}
+public static void main(String[] args) 
+{
+ Scanner in = new Scanner(System.in);
+System.out.println(“Enter the choice for 1: PUSH 2: POP 3: DISPLAY 
+4: EXIT ”);
+Stacks st = new Stacks();
+while(true)
+{
+System.out.println(“Enter your Choice: ”);
+int num = in.nextInt();
+switch( num)
+{
+case 1: System.out.println(“Enter elements to be inserted ”);
+int ele=in.nextInt();
+st.push(ele);
+break;
+case 2:st.pop(); break;
+case 3: st.printElements(); break;
+default: Sysem.exit(0);
+}//end of switch
+ }//end of while
+ }//end of main
+}//end of stacks class
