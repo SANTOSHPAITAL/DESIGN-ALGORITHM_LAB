@@ -1,0 +1,66 @@
+/*  Sort a given set of n integer elements using Quick Sort method and compute its time
+complexity. Run the program for varied values of n> 5000 and record the time taken to 
+sort. Plot a graph of the time taken versus non graph sheet. The elements can be read 
+from a file or can be generated using the random number generator. Demonstrate using 
+Java how the divide and conquer method works along with its time complexity analysis: 
+worst case, average case and best case. */
+
+importjava.util.Scanner;
+publicclass MyQuickSort1 {
+publiclong a[];
+publicvoid quicksort1( long [] inputArr, int low, int high) {
+int j; 
+if(low < high) 
+{ 
+j=partition1(inputArr,low,high); 
+quicksort1(inputArr,low,j-1); 
+quicksort1(inputArr,j+1,high); 
+} 
+}
+publicint partition1(long []a,int low, int high) {
+inti,j;
+longtemp,key;
+key=a[low]; 
+i=low+1; 
+j=high; 
+while(i<j) 
+{ 
+while (i<high && a[i]<=key) 
+i++; 
+while (a[j]>key) 
+j--; 
+if(i<j)
+{
+temp=a[i]; 
+a[i]=a[j]; 
+a[j]=temp;
+}
+}
+temp=a[low]; 
+a[low]=a[j]; 
+a[j]=temp;
+return j; 
+}
+publicstaticvoid main(String args[])
+{
+MyQuickSort1 sorter = newMyQuickSort1();
+Scanner in=newScanner(System.in);
+System.out.println("Enter the value of n");
+int n=in.nextInt();
+long [] input = newlong [n];
+for(inti=0;i<n;i++)
+{
+input[i]= (long) Math.round(Math.random() * 5000);
+}
+longstartime=System.currentTimeMillis();
+sorter.quicksort1(input,0,n-1);
+longendtime= System.currentTimeMillis();
+longtotaltime= endtime-startime;
+for(int j=0;j<n;j++)
+System.out.println(input[j]);
+System.out.println("Total time required for execution=" + totaltime +"ms");;
+System.out.println("the best case and average case time complexity = “
++n*Math.log(n));
+System.out.println("the worst case time complexity = " +n*n);
+}
+}
